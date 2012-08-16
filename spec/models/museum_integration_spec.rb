@@ -11,12 +11,9 @@ describe Museum do
 
     it "groups museums by regions" do
       results = Museum.by_region
-      results[region1].should include(museum1)
-      results[region2].should include(museum2)
-      results[region2].should include(museum3)
+      results["region1"].should include(museum1)
+      results["region2"].should include(museum2)
+      results["region2"].should include(museum3)
     end
-
-
   end
-
 end
