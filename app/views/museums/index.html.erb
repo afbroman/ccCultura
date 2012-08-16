@@ -1,7 +1,12 @@
 <%= link_to "Add Museum", new_museum_path %>
 
 <ul>
-<% museums.each do |museum| %>
-  <li><%= museum.title %></li>
+<% museums.each_pair do |region, museums| %>
+  <li><%= region.name %></li>
+  <ul>
+    <% museums.each do |museum| %>
+      <li><%= museum.title %></li>
+    <% end %>
+  </ul>
 <% end %>
 </ul>

@@ -3,7 +3,7 @@ class MuseumsController < ApplicationController
   helper_method :museum, :museums
 
   def index
-    @museums = Museum.all
+    @museums = Museum.by_region
   end
 
   def new

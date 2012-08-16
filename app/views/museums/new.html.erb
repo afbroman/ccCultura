@@ -5,6 +5,9 @@
   <%= form.label :title  %> <br />
   <%= form.text_field :title %><br />
 
+  <%= form.label :region_id %> <br />
+  <%= form.select :region_id, options_from_collection_for_select(Region.all, :id, :name) %><br />
+
   <%= form.label :address %><br />
   <%= form.text_area :address %> <br />
 
