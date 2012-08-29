@@ -8,6 +8,7 @@ gem 'rails', '3.2.6'
 gem 'sqlite3'
 
 gem 'dynamic_form'
+gem 'devise'
 
 
 # Gems used only for assets and not required
