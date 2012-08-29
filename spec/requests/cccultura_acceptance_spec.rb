@@ -5,11 +5,28 @@ feature 'Adding a museum' do
   background do
     Region.create(name: 'Shrewsbury')
     Region.create(name: 'Madison')
+    User.create(
+      email: 'user@example.com',
+      password: 'foobar'
+    )
+  end
+
+  def log_in
+    visit root_path
+    page.should have_content "Welcome to CCCultura"
+
+    click_on "Login"
+
+    fill_in 'user[email]', with: 'user@example.com'
+    fill_in 'user[password]', with: 'foobar'
+    click_button 'Sign in'
+
+    page.should have_content("Logged in as user@example.com")
   end
 
   def visit_museums
-    visit root_path
-    page.should have_content("Welcome to CCCultura")
+    log_in
+    
     click_on "Museums"
   end
   
