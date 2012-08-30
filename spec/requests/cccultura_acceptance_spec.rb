@@ -11,12 +11,7 @@ feature 'Adding a museum' do
     )
   end
 
-  def log_in
-    visit root_path
-    page.should have_content "Welcome to CCCultura"
-
-    click_on "Login"
-
+  def login
     fill_in 'user[email]', with: 'user@example.com'
     fill_in 'user[password]', with: 'foobar'
     click_button 'Sign in'
@@ -25,14 +20,16 @@ feature 'Adding a museum' do
   end
 
   def visit_museums
-    log_in
-    
+    visit root_path
+    page.should have_content "Welcome to CCCultura"
+
     click_on "Museums"
   end
   
   scenario 'Adding a museum to the system' do
     visit_museums
     click_on "Add Museum"
+    login
     fill_in "Title", with: "National Museum"
     select "Madison", from: "Region"
     fill_in "Address", with: "123 Main St."
@@ -47,6 +44,7 @@ feature 'Adding a museum' do
   scenario 'Adding an invalid museum' do
     visit_museums
     click_on "Add Museum"
+    login
     fill_in "Title", with: ""
     select "Shrewsbury", from: "Region"
     fill_in "Address", with: "123 Main St."

@@ -2,6 +2,8 @@ class MuseumsController < ApplicationController
   attr_reader :museum, :museums
   helper_method :museum, :museums
 
+  before_filter :authenticate_user!, except: [:index]
+
   def index
     @museums = Museum.by_region
   end
