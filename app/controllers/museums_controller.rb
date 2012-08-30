@@ -5,7 +5,11 @@ class MuseumsController < ApplicationController
   before_filter :authenticate_user!, except: [:index]
 
   def index
-    @museums = Museum.by_region
+    if params[:s]
+      @museums = Museum.by_region(params[:s])
+    else
+      @museums = Museum.by_region
+    end
   end
 
   def new
@@ -21,5 +25,9 @@ class MuseumsController < ApplicationController
       flash[:error] = "Error Creating Museum"
       render :new
     end
+  end
+
+  def show
+    @museum = Museum.find(params[:id])
   end
 end

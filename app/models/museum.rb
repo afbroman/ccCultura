@@ -3,8 +3,13 @@ class Museum < ActiveRecord::Base
   validates :title, presence: true
   belongs_to :region
 
-  def self.by_region
-    all(include: :region).group_by(&:region_name)
+  def self.by_region(search=nil)
+    query = if search 
+      where("title LIKE ?", "%#{search}%")
+    else
+      unscoped
+    end
+    query.all(include: :region).group_by(&:region_name)
   end
 
   # def region_name
