@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Cccultura::Application.load_tasks
+CCCultura::Application.load_tasks

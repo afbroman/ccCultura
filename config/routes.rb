@@ -1,4 +1,4 @@
-Cccultura::Application.routes.draw do
+CCCultura::Application.routes.draw do
 
   devise_for :users
 
