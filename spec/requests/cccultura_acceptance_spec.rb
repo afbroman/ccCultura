@@ -26,7 +26,7 @@ feature 'Adding a museum' do
     click_on "Museums"
   end
   
-  scenario 'Adding a museum to the system' do
+  scenario 'valid' do
     visit_museums
     click_on "Add Museum"
     login
@@ -41,7 +41,7 @@ feature 'Adding a museum' do
     page.should have_content("National Museum")
   end
 
-  scenario 'Adding an invalid museum' do
+  scenario 'invalid' do
     visit_museums
     click_on "Add Museum"
     login
@@ -58,7 +58,7 @@ end
 
 feature "searching"  do
   
-  scenario 'searching for an existing museum' do
+  scenario 'for an existing museum' do
 
     Museum.create(title: "National Museum")
     Museum.create(title: "Another National Museum")
