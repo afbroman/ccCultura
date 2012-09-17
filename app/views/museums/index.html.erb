@@ -5,7 +5,7 @@
   <li><%= region %></li>
   <ul>
     <% museums.each do |museum| %>
-      <li><%= museum.title %></li>
+      <li><%= link_to museum.title, museum_path(museum.id) %></li>
     <% end %>
   </ul>
 <% end %>

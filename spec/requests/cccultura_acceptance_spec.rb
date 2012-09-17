@@ -56,7 +56,7 @@ feature 'Adding a museum' do
 
 end
 
-feature "searching"  do
+feature "Searching"  do
   
   scenario 'for an existing museum' do
 
@@ -73,4 +73,21 @@ feature "searching"  do
     page.should have_no_content("Sao Paulo Museo")
 
   end
+end
+
+feature "Showing" do
+
+  scenario 'an existing museum' do
+
+    Museum.create(title: "National Museum", description: "Beautiful museum in the heart of the city")
+    Museum.create(title: "Another National Museum")
+    Museum.create(title: "Sao Paulo Museo")
+
+    visit root_path
+    click_on "Museums"
+    click_on "National Museum"
+    page.should have_content("National Museum")
+    page.should have_content("in the heart of the city")
+  end
+
 end
