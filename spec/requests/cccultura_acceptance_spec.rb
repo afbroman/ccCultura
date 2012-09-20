@@ -89,3 +89,18 @@ feature "Showing" do
   end
 
 end
+
+feature "Display static" do
+
+  scenario "about page" do
+    visit root_path
+    click_on "About"
+    page.should have_content("Welcome to ccCultura")
+  end
+
+  scenario "follow page" do
+    visit root_path
+    click_on "Follow"
+    page.should have_content("Follow ccCultura")
+  end
+end
