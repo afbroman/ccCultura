@@ -80,8 +80,6 @@ feature "Showing" do
   scenario 'an existing museum' do
 
     Museum.create(title: "National Museum", description: "Beautiful museum in the heart of the city")
-    Museum.create(title: "Another National Museum")
-    Museum.create(title: "Sao Paulo Museo")
 
     visit root_path
     click_on "Museums"
